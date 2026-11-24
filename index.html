@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Вместе — кинотеатр</title>
+<style>
+:root{--bg:#090909;--panel:#171717;--muted:#aaa;--red:#e50914;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font:16px/1.45 Arial, sans-serif}
+header{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:#080808;position:sticky;top:0;z-index:5;border-bottom:1px solid #222}
+.logo{font-size:27px;font-weight:900;letter-spacing:-1px;color:var(--red)}nav{display:flex;gap:24px;color:#ddd;font-size:14px}
+nav a{color:inherit;text-decoration:none}.user{border:1px solid #444;border-radius:20px;padding:8px 13px;font-size:13px}
+.hero{min-height:490px;padding:75px 7vw 55px;background:linear-gradient(90deg,#090909 0%,rgba(9,9,9,.93) 35%,rgba(9,9,9,.45) 100%),linear-gradient(0deg,#090909 0%,transparent 65%),radial-gradient(ellipse at 75% 35%,#674b43 0%,#292326 35%,#101010 70%);display:flex;align-items:center}
+.hero-content{max-width:620px}.eyebrow{color:#ffb5b5;text-transform:uppercase;letter-spacing:3px;font-size:12px;font-weight:bold}
+h1{font-size:clamp(42px,6vw,70px);line-height:.98;margin:18px 0 12px;letter-spacing:-2px}
+.meta{color:#ccc;font-size:14px;margin:15px 0}.desc{color:#ddd;max-width:560px;font-size:17px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+button{border:0;border-radius:5px;padding:13px 20px;font-size:15px;font-weight:bold;cursor:pointer}
+.primary{background:var(--red);color:white}.secondary{background:#343434;color:white}
+main{padding:28px 5vw 70px}.section-title{font-size:22px;margin:18px 0}
+.catalog{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.movie{background:var(--panel);border-radius:9px;overflow:hidden;border:1px solid #292929}
+.poster{height:250px;display:flex;align-items:end;padding:18px;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent 70%),radial-gradient(circle at 70% 25%,#b58d73,#4d3434 45%,#161616 85%)}
+.poster strong{font-size:24px;line-height:1.05;text-shadow:0 2px 8px #000}
+.movie-body{padding:14px}.movie-body p{color:var(--muted);font-size:13px;margin:7px 0 12px}
+.movie-body button{width:100%;padding:10px}
+.room{margin-top:38px;background:linear-gradient(135deg,#1b1b1b,#111);border:1px solid #333;border-radius:12px;padding:24px;display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
+.room h2{margin:0 0 8px}.room p{color:#bbb;margin-top:0}
+.field{display:flex;gap:8px;flex-wrap:wrap}.field input{background:#090909;border:1px solid #444;border-radius:5px;color:white;padding:12px;min-width:180px;flex:1}
+.status{font-size:13px;color:#aaa;margin-top:12px}
+.player{margin-top:20px;background:#050505;border:1px solid #333;border-radius:10px;overflow:hidden}
+.screen{aspect-ratio:16/7;display:flex;align-items:center;justify-content:center;text-align:center;background:radial-gradient(ellipse,#292323,#080808 70%);padding:20px}
+.screen .play{font-size:48px;color:white;display:block}.screen small{color:#aaa}
+.controls{display:flex;align-items:center;gap:10px;padding:12px;flex-wrap:wrap}.controls button{padding:9px 13px}.timeline{height:5px;background:#444;flex:1;min-width:80px;border-radius:9px}.timeline span{display:block;width:0;height:100%;background:var(--red);border-radius:9px}
+.notice{border-left:3px solid var(--red);padding:10px 14px;color:#bbb;background:#151515;margin-top:22px;font-size:13px}
+footer{padding:24px 5vw;color:#777;border-top:1px solid #222;font-size:12px}
+@media(max-width:700px){nav{display:none}.hero{padding:55px 6vw;min-height:430px}.room{grid-template-columns:1fr}.screen{aspect-ratio:16/9}}
+</style>
+</head>
+<body>
+<header><div class="logo">ВМЕСТЕ</div><nav><a href="#catalog">Фильмы</a><a href="#room">Совместный просмотр</a><a href="#about">О проекте</a></nav><div class="user">Моя комната</div></header>
+<section class="hero">
+ <div class="hero-content">
+  <div class="eyebrow">Кино лучше вместе</div>
+  <h1>Смотрите<br>вместе.</h1>
+  <div class="meta">ОНЛАЙН-КИНОТЕАТР · КОМНАТЫ ДЛЯ ДРУЗЕЙ</div>
+  <p class="desc">Выбирайте фильм, приглашайте близких по ссылке и смотрите синхронно — с общей паузой, перемоткой и продолжением.</p>
+  <div class="actions"><button class="primary" onclick="document.querySelector('#room').scrollIntoView({behavior:'smooth'})">Создать комнату</button><button class="secondary" onclick="document.querySelector('#catalog').scrollIntoView({behavior:'smooth'})">Открыть каталог</button></div>
+ </div>
+</section>
+<main>
+ <section id="catalog">
+  <h2 class="section-title">Сейчас в каталоге</h2>
+  <div class="catalog">
+   <article class="movie"><div class="poster"><strong>ПРИЗРАЧНАЯ<br>КРАСОТА</strong></div><div class="movie-body"><b>Призрачная красота</b><p>2016 · Драма · Уилл Смит</p><button class="primary" onclick="selectFilm()">Выбрать для просмотра</button></div></article>
+   <article class="movie"><div class="poster" style="background:linear-gradient(0deg,#000b,transparent),radial-gradient(circle at 60% 25%,#637b88,#1a2530 65%,#080808)"><strong>СКОРО<br>В КАТАЛОГЕ</strong></div><div class="movie-body"><b>Новые фильмы</b><p>Каталог будет расширяться</p><button class="secondary" onclick="alert('Демо-каталог пока содержит один тестовый фильм.')">Подробнее</button></div></article>
+   <article class="movie"><div class="poster" style="background:linear-gradient(0deg,#000b,transparent),radial-gradient(circle at 55% 20%,#95724a,#3a2921 60%,#080808)"><strong>СЕРИАЛЫ</strong></div><div class="movie-body"><b>Сериалы</b><p>Подборки и сезоны — позже</p><button class="secondary" onclick="alert('Раздел сериалов появится в следующей версии.')">Скоро</button></div></article>
+  </div>
+ </section>
+ <section id="room" class="room">
+  <div><h2>Комната совместного просмотра</h2><p>Создай комнату и отправь её ссылку второму зрителю.</p><div class="field"><input id="roomcode" readonly value="Нажми «Создать комнату»"><button class="primary" onclick="createRoom()">Создать комнату</button><button class="secondary" onclick="copyRoom()">Копировать ссылку</button></div><div class="status" id="roomstatus">Комната ещё не создана.</div></div>
+  <div><h2>Выбранный фильм</h2><p id="selected">Пока ничего не выбрано.</p><p class="status">Для теста выбери «Призрачную красоту» в каталоге.</p></div>
+ </section>
+ <section class="player">
+ <video id="video" playsinline preload="metadata" style="width:100%;max-height:65vh" src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"></video>
+ <div class="controls"><button class="primary" onclick="command('play')">▶ Воспроизвести</button><button class="secondary" onclick="command('pause')">Пауза</button><button class="secondary" onclick="command('seek',video.currentTime+10)">+10 сек.</button><input id="seek" type="range" min="0" max="100" step="0.1" onchange="command('seek',Number(this.value))"><small id="playstate">Тестовое видео: Big Buck Bunny</small></div>
+ <div class="controls"><button class="secondary" onclick="applyLatest()">Разрешить воспроизведение / восстановить</button></div>
+ </section><div class="notice" id="about">Тестовый ролик Big Buck Bunny (Blender Foundation, CC BY 3.0). «Призрачная красота» — карточка, лицензированный поток не подключён. Ссылка комнаты является ключом доступа.</div>
+</main>
+<footer>ВМЕСТЕ · Концепт онлайн-кинотеатра для совместного просмотра</footer>
+<script>
+const video=document.getElementById('video'), status=document.getElementById('roomstatus'), seek=document.getElementById('seek');
+let room=new URLSearchParams(location.hash.slice(1)).get('room'), latest=null, busy=false, generation=0;
+function selectFilm(){document.getElementById('selected').textContent='Призрачная красота — источник не подключён; используется тестовый ролик';document.getElementById('room').scrollIntoView();}
+async function createRoom(){try{const r=await fetch('/api/rooms',{method:'POST'});if(!r.ok)throw Error();room=(await r.json()).room;generation++;latest=null;location.hash='room='+room;showRoom();await poll();}catch{status.textContent='Не удалось создать комнату';}}
+function showRoom(){document.getElementById('roomcode').value=location.href;status.textContent='Комната подключается…';}
+async function copyRoom(){if(!room)return;try{await navigator.clipboard.writeText(location.href);status.textContent='Ссылка скопирована';}catch{document.getElementById('roomcode').select();}}
+async function exchange(data){if(!room||busy)return;busy=true;const g=generation;try{const start=performance.now();const r=await fetch('/api/rooms/'+encodeURIComponent(room),data?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}:{cache:'no-store'});if(!r.ok)throw Error();const s=await r.json();if(g!==generation)return;latest={...s,received:performance.now(),lag:(performance.now()-start)/2000};status.textContent='Комната подключена';applyLatest();}catch{if(g===generation){status.textContent='Нет связи с комнатой';video.pause();}}finally{busy=false;}}
+function poll(){return exchange();}
+function command(action,position=video.currentTime){if(!room){status.textContent='Сначала создайте комнату';return;}if(action==='play')video.play().catch(()=>{});if(action==='pause')video.pause();return exchange({action,position:Math.min(position,Number.isFinite(video.duration)?video.duration:86400)});}
+function applyLatest(){if(!latest||video.readyState<1)return;const s=latest;let target=s.position+(s.playing?Math.max(0,s.serverTime-s.updated+s.lag+(performance.now()-s.received)/1000):0);target=Math.min(target,video.duration);if(Math.abs(video.currentTime-target)>(s.playing?0.7:0.15))video.currentTime=target;if(s.playing&&target<video.duration){if(video.paused)video.play().catch(()=>{document.getElementById('playstate').textContent='Нажмите «Разрешить воспроизведение»';});}else video.pause();}
+video.addEventListener('loadedmetadata',()=>{seek.max=video.duration;applyLatest();});video.addEventListener('timeupdate',()=>{if(document.activeElement!==seek)seek.value=video.currentTime;});if(room){showRoom();poll();}setInterval(poll,500);
+</script></body></html>
